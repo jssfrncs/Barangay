@@ -7,3 +7,53 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+:root {
+  --sp-0: 0px;
+  --sp-px: 1px;
+  --sp-0-5: 0.125rem; /* 2px */
+  --sp-1: 0.25rem; /* 4px */
+  --sp-2: 0.5rem; /* 8px */
+  --sp-3: 0.75rem; /* 12px */
+  --sp-4: 1rem; /* 16px */
+  --sp-6: 1.5rem; /* 24px */
+  --sp-8: 2rem; /* 32px */
+  --sp-10: 2.5rem; /* 40px */
+  --sp-12: 3rem; /* 48px */
+}
+
+.m-0 {
+  margin: var(--sp-0);
+}
+.m-1 {
+  margin: var(--sp-1);
+}
+.m-2 {
+  margin: var(--sp-2);
+}
+.m-4 {
+  margin: var(--sp-4);
+}
+.m-auto {
+  margin: auto;
+}
+.rounded {
+  border-radius: var(--sp-1);
+}
+.overflow-y-auto {
+  overflow-y: auto;
+}
+.light-dark {
+  background-color: #252728 !important;
+}
+.w-full {
+  width: 100%;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.spinner-wrapper {
+  display: flex;
+  align-items: center; /* Aligns vertically */
+  gap: 8px; /* Adds space between text and spinner */
+}

@@ -11,7 +11,7 @@
     "Barangay": {
       "commandName": "Project",
       "environmentVariables": {
-        "ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:5000;",
       "remoteDebugEnabled": false,

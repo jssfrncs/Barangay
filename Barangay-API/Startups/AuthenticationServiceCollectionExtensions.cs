@@ -1,0 +1,40 @@
+﻿using Barangay_API.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
+namespace Barangay_API.Startups
+{
+    public static class AuthenticationServiceCollectionExtensions
+    {
+        public static void AuthenticationService(IServiceCollection services, IConfiguration configuration)
+        {
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<BarangayContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = configuration["Jwt:Issuer"],
+                    ValidAudience = configuration["Jwt:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
+                };
+            });
+
+            services.AddControllers();
+        }
+    }
+}
